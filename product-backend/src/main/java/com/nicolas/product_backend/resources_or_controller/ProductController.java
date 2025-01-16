@@ -15,6 +15,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,14 +28,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 //TENTAR SER SEMPRE NO PLURAL
 
 //ctrl+ k solta +z -> modo zen do vsCode
-@RestController
+@RestController 
+@CrossOrigin //proteção do navegador para erro cors
 public class ProductController {
 
     // private List<Product> products = new ArrayList<>();
     private List<Product> products = Arrays.asList( 
         new Product(1,"Product 01", false,false,1,"Arroz 1", 100.50),
         new Product(2,"Product 02", true,true,2,"Arroz 2", 200.50),
-        new Product(3,"Product 03", false,true,3,"Arroz 3", 300.50)
+        new Product(3,"Product 03", false,true,3,"Arroz 3", 300.50), 
+        new Product(4,"Product 04", true,false,4,"Arroz 4", 400.50)
         );
        
         // int id, String description, boolean promotion, boolean newProduct, int idCategory, String name,
