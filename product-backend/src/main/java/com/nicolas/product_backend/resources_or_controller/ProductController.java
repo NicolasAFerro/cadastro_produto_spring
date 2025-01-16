@@ -31,10 +31,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
 
     // private List<Product> products = new ArrayList<>();
-    private List<Product> products = Arrays.asList(new Product(1, "Arroz", 100.50),
-            new Product(2, "Feijão", 200.50),
-            new Product(3, "Picanha", 300.50));
-
+    private List<Product> products = Arrays.asList( 
+        new Product(1,"Product 01", false,false,1,"Arroz 1", 100.50),
+        new Product(2,"Product 02", true,true,2,"Arroz 2", 200.50),
+        new Product(3,"Product 03", false,true,3,"Arroz 3", 300.50)
+        );
+       
+        // int id, String description, boolean promotion, boolean newProduct, int idCategory, String name,
+        // double price
     // após a construção do objeto esse método é chamado. Tipo inicializar
     // as variaveis no método construtor, mas tem que colocar essar diretiva
     // postConstruct
