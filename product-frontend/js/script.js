@@ -16,6 +16,9 @@ function loadCategories() {
     async: false,
     success: (response) => {
       categories = response;
+      for(var cat of categories){ 
+        document.getElementById('selectCategory').innerHTML+=`<option value=${cat.id}>${cat.name}</option>`
+      }
     },
   });
 }
@@ -72,20 +75,34 @@ function addNewRow(prod) {
 function save() {
   try {
     var prod = {
-      id: products.length + 1,
       name: document.getElementById("inputName").value,
       description: document.getElementById("inputDescription").value,
       price: document
         .getElementById("inputPrice")
         .value.replace(/\./g, "")
         .replace(",", "."),
-      category: document.getElementById("selectCategory").value,
+      idCategory: document.getElementById("selectCategory").value,
       promotion: document.getElementById("checkBoxPromotion").checked,
-      new: document.getElementById("checkBoxLancamento").checked,
-    };
-    addNewRow(prod);
-    products.push(prod);
-    document.getElementById("formProducts").reset();
+      newProduct: document.getElementById("checkBoxLancamento").checked,
+    }; 
+    $.ajax({
+      url: "http://localhost:8080/products",
+      type: "POST",
+      contentType:"application/json",
+      data:JSON.stringify(prod),
+      success: (product) => {
+        addNewRow(product);
+        products.push(product); 
+        document.getElementById("formProducts").reset();
+      },
+    });
+
+
+
+
+
+   
+    
   } catch (exeception) {
     console.log(exeception);
   }

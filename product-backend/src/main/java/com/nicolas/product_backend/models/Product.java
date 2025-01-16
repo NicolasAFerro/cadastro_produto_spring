@@ -4,9 +4,9 @@ import java.security.PublicKey;
 
 public class Product {
     private int id;
-    private String description; 
-    private boolean promotion; 
-    private boolean newProduct; 
+    private String description;
+    private boolean promotion;
+    private boolean newProduct;
     private int idCategory;
 
     public Product(int id, String description, boolean promotion, boolean newProduct, int idCategory, String name,
